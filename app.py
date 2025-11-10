@@ -18,9 +18,6 @@ from sklearn.cluster import KMeans
 
 # --- 1. CONFIGURATION AND CACHED ASSET LOADING ---
 
-# 🚨 CRITICAL FIX: st.set_page_config MUST be the first Streamlit command 🚨
-st.set_page_config(page_title="Sleep Pattern Estimator", layout="sidebar") 
-# -------------------------------------------------------------------------
 
 # Map clusters to sleep groups (based on your notebook's logic)
 CLUSTER_MAP = {
@@ -132,6 +129,7 @@ if st.button('Estimate Sleep Hours'):
             The final hour estimate is adjusted based on your inputs' distance from the cluster's center.
         </div>
         """, unsafe_allow_html=True)
+
 
 
 
