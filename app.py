@@ -1,8 +1,18 @@
+# app.py (CORRECTED TOP SECTION)
+
+# 1. First, only import streamlit
 import streamlit as st
+
+# 🚨 This MUST be the first Streamlit command executed 🚨
+st.set_page_config(page_title="Sleep Pattern Estimator", layout="sidebar") 
+# ------------------------------------------------------------------------
+
+# 2. Then, import other libraries
 import joblib
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans 
+# ... and the rest of your script
 
 # --- 1. CONFIGURATION AND CACHED ASSET LOADING ---
 
@@ -120,3 +130,4 @@ if st.button('Estimate Sleep Hours'):
             The final hour estimate is adjusted based on your inputs' distance from the cluster's center.
         </div>
         """, unsafe_allow_html=True)
+
