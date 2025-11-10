@@ -1,12 +1,14 @@
 import streamlit as st
 import joblib
 import numpy as np
-import pandas as pd 
-from sklearn.cluster import KMeans # Included for clarity, though joblib handles the object loading
+import pandas as pd
+from sklearn.cluster import KMeans 
 
 # --- 1. CONFIGURATION AND CACHED ASSET LOADING ---
 
-st.set_page_config(page_title="Sleep Pattern Estimator", layout="sidebar")
+# 🚨 CRITICAL FIX: st.set_page_config MUST be the first Streamlit command 🚨
+st.set_page_config(page_title="Sleep Pattern Estimator", layout="sidebar") 
+# -------------------------------------------------------------------------
 
 # Map clusters to sleep groups (based on your notebook's logic)
 CLUSTER_MAP = {
@@ -20,6 +22,7 @@ CLUSTER_MAP = {
 def load_assets():
     """Loads the trained model, scaler, and cluster centers."""
     try:
+        # These filenames must match your downloaded .joblib files
         model = joblib.load('kmeans_model.joblib')
         scaler = joblib.load('scaler.joblib')
         centers = joblib.load('cluster_centers.joblib')
